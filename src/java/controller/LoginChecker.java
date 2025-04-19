@@ -26,18 +26,18 @@ public class LoginChecker extends HttpServlet
 {
    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
    {
-      response.sendRedirect("Login.html");
+      response.sendRedirect("Login.jsp");
    }
      
    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
    {
        String email = request.getParameter("email");
        String password = request.getParameter("password");
-       
+       String useremail=null;
        try
        {
         Statement st= DBConnector.getStatement(); 
-        String query="SELECT password,email FROM tb WHERE email='"+email+"'";
+        String query="SELECT password,email FROM tb WHERE email='"+email+"' and password='"+password+"'";
         System.out.println("query="+query);
         ResultSet rs=st.executeQuery(query);
         
