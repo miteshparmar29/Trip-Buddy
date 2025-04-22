@@ -25,6 +25,7 @@
         <form action="Logout.jsp" method="post">
         <input type="submit" value="LogOut">
         </form>
+        
     </body>
 </html>
 <%
