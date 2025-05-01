@@ -1,138 +1,149 @@
+<%@page import="java.sql.SQLException"%>
+<%@page import="db.DBConnector"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.Statement"%>
+
+<%
+    String name = "", email = "", mobile = "", city = "", age = "", gender = "", budget = "", fdate = "", tdate = "";
+
+    try {
+        String email1 = (String) session.getAttribute("useremail");
+        Statement st = DBConnector.getStatement();
+        String query = "SELECT * FROM tb WHERE email='" + email1 + "'";
+        ResultSet rs = st.executeQuery(query);
+
+        while (rs.next()) {
+            name = rs.getString(1);
+            email = rs.getString(2);
+            age = rs.getString(4);
+            gender = rs.getString(5);
+            mobile = rs.getString(6);
+            budget = rs.getString(8);
+            city = rs.getString(7);
+            fdate = rs.getString(9);
+            tdate = rs.getString(10);
+        }
+    } catch (SQLException e) {
+        System.out.println(e);
+    }
+%>
+
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>My Profile | Trip Buddy</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #f4f4f4;
-    }
+    <meta charset="UTF-8">
+    <title>My Profile | Trip Buddy</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(to right, #48cae4, #0096c7, #023e8a);
+            color: #fff;
+        }
 
-    header {
-      background-color: #0077b6;
-      color: white;
-      padding: 20px;
-      text-align: center;
-    }
+        .container {
+            max-width: 750px;
+            margin: 60px auto;
+            background: #ffffff10;
+            box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+            border-radius: 15px;
+            padding: 40px;
+            backdrop-filter: blur(10px);
+        }
 
-    nav {
-      display: flex;
-      justify-content: center;
-      background-color: #023e8a;
-    }
+        h1 {
+            text-align: center;
+            color: #ffffff;
+            margin-bottom: 40px;
+            font-size: 32px;
+        }
 
-    nav a {
-      color: white;
-      padding: 14px 20px;
-      text-decoration: none;
-    }
+        .profile-field {
+            margin-bottom: 25px;
+            background: #ffffff20;
+            padding: 20px;
+            border-radius: 10px;
+            transition: 0.3s ease;
+        }
 
-    nav a:hover {
-      background-color: #0096c7;
-    }
+        .profile-field:hover {
+            background: #ffffff30;
+            transform: translateY(-2px);
+        }
 
-    .container {
-      max-width: 1000px;
-      margin: 30px auto;
-      background: white;
-      padding: 30px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.1);
-      border-radius: 10px;
-    }
+        .label {
+            font-weight: bold;
+            font-size: 14px;
+            color: #caf0f8;
+        }
 
-    h2 {
-      color: #0077b6;
-    }
+        .value {
+            font-size: 18px;
+            color: #ffffff;
+            margin-top: 5px;
+        }
 
-    .section {
-      margin-bottom: 30px;
-    }
+        .edit-btn {
+            background: linear-gradient(135deg, #00b4d8, #0077b6);
+            color: white;
+            padding: 12px 28px;
+            border: none;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+            margin-top: 30px;
+        }
 
-    .section h3 {
-      margin-bottom: 10px;
-      color: #023e8a;
-      border-bottom: 1px solid #ccc;
-      padding-bottom: 5px;
-    }
+        .edit-btn:hover {
+            background: linear-gradient(135deg, #90e0ef, #00b4d8);
+            color: #03045e;
+            transform: scale(1.05);
+        }
 
-    .info-box, .booking-card {
-      background-color: #f1faff;
-      border-left: 5px solid #0096c7;
-      padding: 15px;
-      margin-bottom: 15px;
-      border-radius: 5px;
-    }
+        footer {
+            margin-top: 50px;
+            text-align: center;
+            padding: 20px;
+            color: #ffffffb3;
+            font-size: 14px;
+        }
 
-    footer {
-      background-color: #03045e;
-      color: white;
-      text-align: center;
-      padding: 10px;
-      margin-top: 40px;
-    }
-  </style>
+        .glow {
+            color: #00e0ff;
+            text-shadow: 0 0 8px #00e0ff;
+        }
+    </style>
 </head>
 <body>
 
-  <!-- Header -->
-  <header>
-    <h1>Trip Buddy</h1>
-    <p>Welcome to Your Profile</p>
-  </header>
+<div class="container">
+    <h1 class="glow">My Profile</h1>
 
-  <!-- Navigation -->
-  <nav>
-    <a href="#">Home</a>
-    <a href="#">My Profile</a>
-    <a href="#">Bookings</a>
-    <a href="#">Saved Packages</a>
-    <a href="#">Logout</a>
-  </nav>
+    <div class="profile-field"><div class="label">Name</div><div class="value"><%=name %></div></div>
+    <div class="profile-field"><div class="label">Email</div><div class="value"><%=email %></div></div>
+    <div class="profile-field"><div class="label">Age</div><div class="value"><%=age %></div></div>
+    <div class="profile-field"><div class="label">Gender</div><div class="value"><%=gender %></div></div>
+    <div class="profile-field"><div class="label">Mobile</div><div class="value"><%=mobile %></div></div>
+    <div class="profile-field"><div class="label">City</div><div class="value"><%=city %></div></div>
+    <div class="profile-field"><div class="label">Budget</div><div class="value"><%=budget %></div></div>
+    <div class="profile-field"><div class="label">Travel Start Date</div><div class="value"><%=fdate %></div></div>
+    <div class="profile-field"><div class="label">Travel End Date</div><div class="value"><%=tdate %></div></div>
 
-  <!-- Profile Container -->
-  <div class="container">
-
-    <!-- User Info -->
-    <div class="section">
-      <h2>Profile Overview</h2>
-      <div class="info-box">
-        <p><strong>Name:</strong> Mitali Patidar</p>
-        <p><strong>Email:</strong> mitali@example.com</p>
-        <p><strong>Phone:</strong> +91-9876543210</p>
-        <p><strong>City:</strong> Indore</p>
-      </div>
+    <!-- ? Edit Profile Button inside the container and well placed -->
+    <div style="text-align: center;">
+        <form action="Edit_Profile.jsp" method="post">
+            <button type="submit" class="edit-btn">Edit Profile</button>
+        </form>
     </div>
+</div>
 
-    <!-- Booking History -->
-    <div class="section">
-      <h3>Booking History</h3>
-      <div class="booking-card">
-        <p><strong>Hotel:</strong> Radisson Blu</p>
-        <p><strong>Check-in:</strong> 20th April 2025</p>
-        <p><strong>Status:</strong> Confirmed</p>
-      </div>
-      <div class="booking-card">
-        <p><strong>Vehicle Rental:</strong> Swift Dzire (With Driver)</p>
-        <p><strong>From:</strong> 20th April</p>
-        <p><strong>To:</strong> 22nd April</p>
-        <p><strong>Status:</strong> Confirmed</p>
-      </div>
-    </div>
-
-    <!-- Saved Packages -->
-    <div class="section">
-      <h3>Saved Packages</h3>
-      <div class="info-box">
-        <p><strong>Package Name:</strong> Indore Darshan Special</p>
-        <p><strong>Includes:</strong> Hotel Stay + Bike Rental + City Tour</p>
-        <p><strong>Status:</strong> Not Booked</p>
-      </div>
-    </div>
-
-  </div>
+<footer>
+    &copy; 2025 <span class="glow">Trip Buddy</span> | Designed for Smart India Hackathon
+</footer>
 
 </body>
 </html>
