@@ -412,13 +412,7 @@
     <header>
         <div class="container header-container">
             <a href="index.html" class="logo"><i class="fas fa-plane-departure"></i> Trip Buddy</a>
-            <ul class="nav-menu">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="#">Flights</a></li>
-                <li><a href="#">Hotels</a></li>
-                <li><a href="#">Packages</a></li>
-                <li><a href="#">Car Rentals</a></li>
-            </ul>
+            
         </div>
     </header>
     
@@ -537,6 +531,7 @@
                                         <option value="Aligarh">Aligarh</option>
                                         <option value="Allahabad">Allahabad</option>
                                         <option value="Almora">Almora</option>
+              
                                         <!-- More cities would be here -->
                                     </select>
                                     <span class="error-message" id="cityError">Please select your city</span>
@@ -547,8 +542,8 @@
                             <td>Travel Budget:</td>
                             <td>
                                 <div class="input-group">
-                                    <input type="number" id="budget" name="budget" placeholder="Enter your travel budget in ₹" class="form-input" min="1000" required>
-                                    <span class="error-message" id="budgetError">Please enter a valid budget (minimum ₹1000)</span>
+                                    <input type="number" id="budget" name="budget" placeholder="Enter your travel budget in ?" class="form-input" min="1000" required>
+                                    <span class="error-message" id="budgetError">Please enter a valid budget (minimum ?1000)</span>
                                 </div>
                             </td>
                         </tr>
@@ -746,7 +741,7 @@
             if (budget === '') {
                 return showError('budget', 'Please enter your travel budget');
             } else if (budget < 1000) {
-                return showError('budget', 'Please enter a valid budget (minimum ₹1000)');
+                return showError('budget', 'Please enter a valid budget (minimum ?1000)');
             } else {
                 return hideError('budget');
             }
@@ -802,46 +797,28 @@
         }
         
         // Form submission
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Validate all fields
-            const isNameValid = validateName();
-            const isEmailValid = validateEmail();
-            const isPasswordValid = validatePassword();
-            const isConfirmPasswordValid = validateConfirmPassword();
-            const isAgeValid = validateAge();
-            const isGenderValid = validateGender();
-            const isMobileValid = validateMobile();
-            const isCityValid = validateCity();
-            const isBudgetValid = validateBudget();
-            const isFromDateValid = validateFromDate();
-            const isToDateValid = validateToDate();
-            
-            // If all fields are valid, submit the form
-            if (isNameValid && isEmailValid && isPasswordValid && isConfirmPasswordValid && 
-                isAgeValid && isGenderValid && isMobileValid && isCityValid && 
-                isBudgetValid && isFromDateValid && isToDateValid) {
-                
-                // Show loading spinner
-                submitBtn.disabled = true;
-                loadingSpinner.style.display = 'inline-block';
-                
-                // Simulate form submission (for demo purposes)
-                setTimeout(function() {
-                    // Show success message
-                    successMessage.style.display = 'block';
-                    
-                    // Hide form
-                    form.style.display = 'none';
-                    
-                    // Reset form
-                    form.reset();
-                    
-                    // Redirect to login page after 3 seconds
-                    setTimeout(function() {
-                        window.location.href = 'Login.jsp';
-                    }, 3000);
-                }, 1500);
-            }
-        });
+     form.addEventListener('submit', function(e) {
+    // REMOVE THIS LINE IF YOU WANT SERVER-SIDE SUBMISSION:
+    // e.preventDefault();
+
+    // Validate all fields
+    const isNameValid = validateName();
+    const isEmailValid = validateEmail();
+    const isPasswordValid = validatePassword();
+    const isConfirmPasswordValid = validateConfirmPassword();
+    const isAgeValid = validateAge();
+    const isGenderValid = validateGender();
+    const isMobileValid = validateMobile();
+    const isCityValid = validateCity();
+    const isBudgetValid = validateBudget();
+    const isFromDateValid = validateFromDate();
+    const isToDateValid = validateToDate();
+
+    if (!(isNameValid && isEmailValid && isPasswordValid && isConfirmPasswordValid &&
+        isAgeValid && isGenderValid && isMobileValid && isCityValid &&
+        isBudgetValid && isFromDateValid && isToDateValid)) {
+        e.preventDefault(); // Block submission only if validation fails
+    }
+});
+
+        </script>

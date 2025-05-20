@@ -168,7 +168,7 @@
         </form>
         <div class="links">
             <p><a href="ForgotPassword.html">Forgot your password?</a></p>
-            <p><a href="Registration.html">New user? Create an account</a></p>
+            <p><a href="Registration.jsp">New user? Create an account</a></p>
         </div>
     </div>
 </body>

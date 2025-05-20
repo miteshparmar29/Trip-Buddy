@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 public class RegistrationChecker extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.sendRedirect("Registration.html");
+        response.sendRedirect("Registration.jsp");
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
