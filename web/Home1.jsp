@@ -423,6 +423,31 @@
     input[type="number"] {
         text-align: center;
     }
+      .weather-btn {
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            padding: 15px 30px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+
+        .weather-btn:hover {
+            background-color: #2980b9;
+            box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .weather-btn:active {
+            background-color: #1f5f8b;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        .auth-buttons a {
+    text-decoration: none;
+}
+
     </style>
 </head>
 <body>
@@ -434,12 +459,14 @@
                 <li><a href="#">Home</a></li>
                 <!--<li><a href="#">Flights</a></li>-->
                 <li><a href="#">Hotels</a></li>
-                <li><a href="#">Packages</a></li>
-                <li><a href="#">Car Rentals</a></li>
+                <li><a href="">Packages</a></li>
+                <li><a href="">Car Rentals</a></li>
             </ul>
             <div class="auth-buttons">
-                <button class="btn btn-outline" id="loginButton">Login</button>
-                <button class="btn btn-primary" id="registerButton">Register</button>
+<!--                <button class="btn btn-outline" id="loginButton">Login</button>
+                <button class="btn btn-primary" id="registerButton">Register</button>-->
+              <a class="btn btn-outline" href="Login.jsp">Login</a>
+            <a class="btn btn-primary"  href="Registration.jsp">Register</a>
             </div>
         </div>
     </header>
@@ -459,7 +486,7 @@
                     <div class="form-tab">Car Rentals</div>
                 </div>
                 
-                <form method="get" action="Search">
+                <form method="get" action="">
     <!-- Detailed selection -->
     <div class="form-row">
     <div class="form-group">
@@ -493,28 +520,17 @@
         </div>
     </section>
     
-    <!-- Weather Widget Section -->
-    <div class="container">
-        <div class="weather-widget">
-            <div class="weather-header">
-                <h3>Current Weather</h3>
-                <select id="weather-location">
-                    <option>New York</option>
-                    <option>London</option>
-                    <option>Paris</option>
-                    <option>Tokyo</option>
-                </select>
-            </div>
-            <div class="weather-info">
-                <div class="weather-temp">72?F</div>
-                <div class="weather-details">
-                    <p><strong>New York, USA</strong></p>
-                    <p>Sunny, clear skies</p>
-                    <p>Humidity: 65% | Wind: 5 mph</p>
-                </div>
-            </div>
-        </div>
-    </div>
+     <!-- Weather Widget Section -->
+   <center>
+       <br>
+       <br>
+            <button class="weather-btn" onclick="">Check Weather Forecast</button>
+</center>
+<script>
+  function checkWeather() {
+    window.location.href = "weather1.jsp";
+  }
+</script>
 <section class="services" style="display: flex; justify-content: center; align-items: center; min-height: 100vh;">
         <div class="container" style="max-width: 1200px; margin: 0 auto;">
             <div class="section-title" style="text-align: center;">
@@ -573,8 +589,8 @@
                     </div>
                     <div class="service-content">
                         <h3>Rajwada Palace</h3>
-                        <p>The city of lights and romance.</p>
-                        <a href="#" class="btn btn-outline">View Deals</a>
+                        <!--<p>The city of lights and romance.</p>-->
+                        <!--<a href="#" class="btn btn-outline">View Details</a>-->
                     </div>
                 </div>
                 
@@ -584,37 +600,37 @@
                     </div>
                     <div class="service-content">
                         <h3>Lotus Valley</h3>
-                        <p>Tropical paradise with beautiful beaches.</p>
-                        <a href="#" class="btn btn-outline">View Deals</a>
+                        <!--<p>Tropical paradise with beautiful beaches.</p>-->
+                        <!--<a href="#" class="btn btn-outline">View Details</a>-->
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-card">
+                        <img src="kanchmandir1.jpg" alt="Kaanch Mandir" height="200px" width="100%">
+                    </div>
+                    <div class="service-content">
+                        <h3>Kaanch Mandir</h3>
+                        <!--<p>The city that never sleeps.</p>-->
+                        <!--<a href="#" class="btn btn-outline">View Details</a>-->
                     </div>
                 </div>
                 
                 <div class="service-card">
                     <div class="service-img">
-                        <img src"" alt="New York">
+                        <img src="Patalpani.jpg" alt="Patalpani Waterfall" height="200px" width="100%">
                     </div>
                     <div class="service-content">
-                        <h3>New York, USA</h3>
-                        <p>The city that never sleeps.</p>
-                        <a href="#" class="btn btn-outline">View Deals</a>
-                    </div>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-img">
-                        <img src="/api/placeholder/400/300" alt="Tokyo">
-                    </div>
-                    <div class="service-content">
-                        <h3>Tokyo, Japan</h3>
-                        <p>A perfect blend of tradition and modernity.</p>
-                        <a href="#" class="btn btn-outline">View Deals</a>
+                        <h3>Patalpani Waterfall</h3>
+                        <!--<p>A perfect blend of tradition and modernity.</p>-->
+                        <!--<a href="#" class="btn btn-outline">View Details</a>-->
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <script src="https://cdn.botpress.cloud/webchat/v2.4/inject.js"></script>
-    <script src="https://files.bpcontent.cloud/2025/04/20/11/20250420115751-L8TC1QY4.js"></script>
+<!--    <script src="https://cdn.botpress.cloud/webchat/v2.4/inject.js"></script>
+    <script src="https://files.bpcontent.cloud/2025/04/20/11/20250420115751-L8TC1QY4.js"></script>-->
     <!-- Chatbot Widget -->
 <!--    <div class="chatbot-widget">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -623,7 +639,7 @@
     </div>
     -->
     <!-- Footer -->
-    <footer>
+<!--    <footer>
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
@@ -666,7 +682,7 @@
                     </ul>
                 </div>
             </div>
-            
+            -->
             <div class="footer-bottom">
                 <p>&copy; 2025 Trip Buddy. All rights reserved.</p>
             </div>
@@ -713,7 +729,7 @@
         });
         document.getElementById('registerButton').addEventListener('click', function() {
             // Redirect to register page when needed
-             window.location.href = 'Registration.html';
+             window.location.href = 'Registration.jsp';
 //            alert('Registration functionality will be added soon!');
         });
         // Chatbot widget toggle (simplified version)

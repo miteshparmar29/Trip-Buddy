@@ -7,6 +7,15 @@
 <%@ page import="java.io.*" %>
 
 <!DOCTYPE html>
+<%
+       session =request.getSession(false);
+      String useremail=(String) session.getAttribute("useremail");
+   
+      
+  if(useremail!=null)
+  {
+      
+  %>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -237,37 +246,84 @@
                 font-size: 24px;
             }
         }
-        .home-icon {
-            font-size: 20px;
-            text-decoration: none;
-            color: #333;
+        .header-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.home-icon {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    color: var(--primary-color);
+    font-weight: 600;
+    font-size: 16px;
+    transition: color 0.3s;
+}
+
+.home-icon img {
+    width: 22px;
+    height: 22px;
+}
+
+.home-icon:hover {
+    color: var(--accent-color);
+}
+
+             .header {
+            background: linear-gradient(to right, #6C63FF, #2A2A72);  /* Replace with your actual colors */
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            transition: color 0.3s ease;
+        }
+        
+        .brand {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        
+        .nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 1.5rem;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .nav a:hover {
+            color: var(--accent);
         }
 
-        .home-icon:hover {
-            color: #FF6A00;
-        }
-
-        .home-icon img {
-            width: 24px;
-            height: 24px;
-            margin-right: 8px;
-        }
     </style>
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <a href="Home.jsp" class="home-icon">
-            <img src="https://cdn-icons-png.flaticon.com/512/25/25694.png" alt="Home Icon">
-            Home
-        </a>
+    
 
-    <div class="header">
-        <div class="container">
-            <h1 class="page-title">Discover Your Perfect Stay</h1>
+  
+    <header class="header">
+        <div class="header-content">
+            <div class="brand">Trip Buddy</div>
+            <nav class="nav">
+                <a href="Home.jsp"><i class="fas fa-home"></i> Home</a>
+               
+                <a href="Profile.jsp"><i class="fas fa-user"></i> Account</a>
+            </nav>
         </div>
-    </div>
+    </header>
+
 
     <div class="container">
         <%
@@ -517,4 +573,9 @@
         
         return selectedFeatures;
     }
+%>
+<%}
+else{
+      response.sendRedirect("Login.jsp");
+}
 %>

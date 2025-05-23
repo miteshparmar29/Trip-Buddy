@@ -2,6 +2,15 @@
 <%@ page import="db.DBConnector" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
+<%
+       session =request.getSession(false);
+      String useremail=(String) session.getAttribute("useremail");
+   
+      
+  if(useremail!=null)
+  {
+      
+  %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -293,6 +302,34 @@
                 height: 300px;
             }
         }
+        .back-button {
+    margin-bottom: 1rem;
+}
+
+.back-button a {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 16px;
+    background: linear-gradient(135deg, var(--primary-light), var(--primary));
+    color: white;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    font-size: 0.95rem;
+}
+
+.back-button a i {
+    margin-right: 8px;
+}
+
+.back-button a:hover {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    transform: translateY(-2px);
+}
+
+
     </style>
 </head>
 <body>
@@ -300,14 +337,20 @@
         <div class="header-content">
             <div class="brand">Trip Buddy</div>
             <nav class="nav">
-                <a href="index.jsp"><i class="fas fa-home"></i> Home</a>
-                <a href="#"><i class="fas fa-search"></i> Search</a>
-                <a href="#"><i class="fas fa-user"></i> Account</a>
+                <a href="Home.jsp"><i class="fas fa-home"></i> Home</a>
+               
+                <a href="Profile.jsp"><i class="fas fa-user"></i> Account</a>
             </nav>
         </div>
     </header>
 
     <div class="container">
+        <div class="back-button">
+    <a href="Search.jsp">
+        <i class="fas fa-arrow-left"></i> Back to Search
+    </a>
+</div>
+
         <%
             String hotelName = request.getParameter("hotelName");
             String base64Image = "";
@@ -508,3 +551,9 @@
     </script>
 </body>
 </html>
+
+<%}
+else{
+      response.sendRedirect("Login.jsp");
+}
+%>

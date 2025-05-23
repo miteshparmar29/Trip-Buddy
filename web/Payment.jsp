@@ -616,7 +616,7 @@
                         
                         <div class="form-group">
                             <label for="cvv">CVV</label>
-                            <input type="text" id="cvv" class="form-control" placeholder="123" maxlength="3" required>
+                            <input type="password" id="cvv" class="form-control" placeholder="123" maxlength="3" required>
                         </div>
                     </div>
                     

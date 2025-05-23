@@ -2,6 +2,16 @@
 <%@page import="db.DBConnector"%>
 
 <%
+    
+   
+       session =request.getSession(false);
+      String useremail=(String) session.getAttribute("useremail");
+   
+      
+  if(useremail!=null)
+  {
+      
+  %>
     String name = "", email = "", mobile = "", city = "", age = "", gender = "", budget = "", fdate = "", tdate = "";
 
     try {
@@ -138,7 +148,13 @@
     <input type="hidden" name="email" value="<%=email%>">
 
     <button type="submit"> Update Profile</button>
+    <button type="button" onclick="window.location.href='Profile.jsp'" style="flex: 1; background: #0077b6; color: white; font-weight: bold; border-radius: 30px; cursor: pointer; box-shadow: 0 8px 15px rgba(0,0,0,0.2); transition: 0.3s ease;">Back</button>
   </form>
 
 </body>
 </html>
+<%}
+else{
+      response.sendRedirect("Login.jsp");
+}
+%>

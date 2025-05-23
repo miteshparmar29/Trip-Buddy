@@ -468,7 +468,58 @@
         .profile-container:hover .tooltip {
             display: block;
         }
+          .weather-btn {
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            padding: 15px 30px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+
+        .weather-btn:hover {
+            background-color: #2980b9;
+            box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .weather-btn:active {
+            background-color: #1f5f8b;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        .profile-wrapper {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 10;
+}
+
+.profile-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+    color: #333;
+    font-size: 20px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    text-decoration: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.profile-button:hover {
+    background-color: #4e73df;
+    color: white;
+    transform: scale(1.05);
+}
+
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 </head>
 <body>
     <!-- Header -->
@@ -478,16 +529,17 @@
             <ul class="nav-menu">
                 <li><a href="#">Home</a></li>
                 <!--<li><a href="#">Flights</a></li>-->
-                <li><a href="#">Hotels</a></li>
-                <li><a href="#">Packages</a></li>
-                <li><a href="#">Car Rentals</a></li>
+                <li><a href="Search.jsp">Hotels</a></li>
+                 <li><a href="Packages.html">Packages</a></li>
+                <li><a href="Rental.html">Car Rentals</a></li>
+               
             </ul>
-           <div class="profile-container">
-        <a href="Profile.jsp">
-            <div class="profile-icon">P</div>
-        </a>
-        <div class="tooltip">My Profile</div>
-    </div>
+            <div class="profile-wrapper">
+    <a href="Profile.jsp" class="profile-button" title="My Profile">
+        <i class="fas fa-user"></i>
+    </a>
+</div>
+
     
         </div>
     </header>
@@ -496,7 +548,7 @@
     <section class="hero">
         <div class="container">
             <h1>Your Journey Begins Here</h1>
-            <p>Discover amazing places, find the best deals on flights, hotels, and vacation packages all in one place.</p>
+            <p>Discover amazing places, find the best deals on hotels,Cars for Rent and vacation packages all in one place.</p>
             
             <!-- Search Form -->
             <div class="search-form">
@@ -512,11 +564,11 @@
     <div class="form-row">
     <div class="form-group">
         <label for="depart-date">Arrival</label>
-        <input type="date" id="depart-date" class="form-control">
+        <input type="date" id="depart-date" class="form-control" required>
     </div>
     <div class="form-group">
         <label for="return-date">Departure</label>
-        <input type="date" id="return-date" class="form-control">
+        <input type="date" id="return-date" class="form-control" required>
     </div>
     <div class="form-group">
         <label>Travelers</label>
@@ -524,11 +576,11 @@
             <div class="traveler-inputs">
                 <div class="traveler-group">
                     <label for="adults">Adults</label>
-                    <input type="number" id="adults" name="adults" min="1" max="10" value="1" class="form-control">
+                    <input type="number" id="adults" name="adults" min="1" max="10" value="1" class="form-control" required>
                 </div>
                 <div class="traveler-group">
                     <label for="children">Children</label>
-                    <input type="number" id="children" name="children" min="0" max="10" value="0" class="form-control">
+                    <input type="number" id="children" name="children" min="0" max="10" value="0" class="form-control" required>
                 </div>
             </div>
         </div>
@@ -541,28 +593,18 @@
         </div>
     </section>
     
-    <!-- Weather Widget Section -->
-    <div class="container">
-        <div class="weather-widget">
-            <div class="weather-header">
-                <h3>Current Weather</h3>
-                <select id="weather-location">
-                    <option>New York</option>
-                    <option>London</option>
-                    <option>Paris</option>
-                    <option>Tokyo</option>
-                </select>
-            </div>
-            <div class="weather-info">
-                <div class="weather-temp">72?F</div>
-                <div class="weather-details">
-                    <p><strong>New York, USA</strong></p>
-                    <p>Sunny, clear skies</p>
-                    <p>Humidity: 65% | Wind: 5 mph</p>
-                </div>
-            </div>
-        </div>
-    </div>
+       <!-- Weather Widget Section -->
+   <center>
+       <br>
+       <br>
+            <button class="weather-btn" onclick="checkWeather()">Check Weather Forecast</button>
+</center>
+<script>
+  function checkWeather() {
+    window.location.href = "weather1.jsp";
+  }
+</script>
+
 <section class="services" style="display: flex; justify-content: center; align-items: center; min-height: 100vh;">
         <div class="container" style="max-width: 1200px; margin: 0 auto;">
             <div class="section-title" style="text-align: center;">
@@ -578,7 +620,7 @@
                     <div class="service-content" style="padding: 20px;">
                         <h3>Hotel Reservations</h3>
                         <p>Book your stay at the best hotels with exclusive discounts.</p>
-                        <a href="#" class="btn btn-outline" style="display: inline-block; padding: 8px 16px; border: 1px solid #0066cc; color: #0066cc; text-decoration: none; border-radius: 4px; margin-top: 10px; transition: all 0.3s;">Find Hotels</a>
+                        <a href="Search.jsp" class="btn btn-outline" style="display: inline-block; padding: 8px 16px; border: 1px solid #0066cc; color: #0066cc; text-decoration: none; border-radius: 4px; margin-top: 10px; transition: all 0.3s;">Find Hotels</a>
                     </div>
                 </div>
                 
@@ -589,7 +631,7 @@
                     <div class="service-content" style="padding: 20px;">
                         <h3>Vacation Packages</h3>
                         <p>All-inclusive packages for a hassle-free trip experience.</p>
-                        <a href="#" class="btn btn-outline" style="display: inline-block; padding: 8px 16px; border: 1px solid #0066cc; color: #0066cc; text-decoration: none; border-radius: 4px; margin-top: 10px; transition: all 0.3s;">Explore Packages</a>
+                        <a href="Packages.html" class="btn btn-outline" style="display: inline-block; padding: 8px 16px; border: 1px solid #0066cc; color: #0066cc; text-decoration: none; border-radius: 4px; margin-top: 10px; transition: all 0.3s;">Explore Packages</a>
                     </div>
                 </div>
                 
@@ -600,7 +642,7 @@
                     <div class="service-content" style="padding: 20px;">
                         <h3>Car Rentals</h3>
                         <p>Rent vehicles for your trips at affordable prices.</p>
-                        <a href="#" class="btn btn-outline" style="display: inline-block; padding: 8px 16px; border: 1px solid #0066cc; color: #0066cc; text-decoration: none; border-radius: 4px; margin-top: 10px; transition: all 0.3s;">Rent a Car</a>
+                        <a href="Rental.html" class="btn btn-outline" style="display: inline-block; padding: 8px 16px; border: 1px solid #0066cc; color: #0066cc; text-decoration: none; border-radius: 4px; margin-top: 10px; transition: all 0.3s;">Rent a Car</a>
                     </div>
                 </div>
             </div>
@@ -621,8 +663,8 @@
                     </div>
                     <div class="service-content">
                         <h3>Rajwada Palace</h3>
-                        <p>The city of lights and romance.</p>
-                        <a href="#" class="btn btn-outline">View Deals</a>
+                        <!--<p>The city of lights and romance.</p>-->
+                        <!--<a href="#" class="btn btn-outline">View Details</a>-->
                     </div>
                 </div>
                 
@@ -632,30 +674,30 @@
                     </div>
                     <div class="service-content">
                         <h3>Lotus Valley</h3>
-                        <p>Tropical paradise with beautiful beaches.</p>
-                        <a href="#" class="btn btn-outline">View Deals</a>
+                        <!--<p>Tropical paradise with beautiful beaches.</p>-->
+                        <!--<a href="#" class="btn btn-outline">View Details</a>-->
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-card">
+                        <img src="kanchmandir1.jpg" alt="Kaanch Mandir" height="200px" width="100%">
+                    </div>
+                    <div class="service-content">
+                        <h3>Kaanch Mandir</h3>
+                        <!--<p>The city that never sleeps.</p>-->
+                        <!--<a href="#" class="btn btn-outline">View Details</a>-->
                     </div>
                 </div>
                 
                 <div class="service-card">
                     <div class="service-img">
-                        <img src"" alt="New York">
+                        <img src="Patalpani.jpg" alt="Patalpani Waterfall" height="200px" width="100%">
                     </div>
                     <div class="service-content">
-                        <h3>New York, USA</h3>
-                        <p>The city that never sleeps.</p>
-                        <a href="#" class="btn btn-outline">View Deals</a>
-                    </div>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-img">
-                        <img src="/api/placeholder/400/300" alt="Tokyo">
-                    </div>
-                    <div class="service-content">
-                        <h3>Tokyo, Japan</h3>
-                        <p>A perfect blend of tradition and modernity.</p>
-                        <a href="#" class="btn btn-outline">View Deals</a>
+                        <h3>Patalpani Waterfall</h3>
+                        <!--<p>A perfect blend of tradition and modernity.</p>-->
+                        <!--<a href="#" class="btn btn-outline">View Details</a>-->
                     </div>
                 </div>
             </div>
@@ -671,7 +713,7 @@
     </div>
     -->
     <!-- Footer -->
-    <footer>
+<!--    <footer>
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
@@ -719,7 +761,8 @@
                 <p>&copy; 2025 Trip Buddy. All rights reserved.</p>
             </div>
         </div>
-    </footer>
+    </footer>-->
+
     
     <!-- JavaScript for interactivity -->
     <script>

@@ -4,6 +4,15 @@
 <%@page import="java.sql.Statement"%>
 
 <%
+   
+       session =request.getSession(false);
+      String useremail=(String) session.getAttribute("useremail");
+   
+      
+  if(useremail!=null)
+  {
+      
+  
     String name = "", email = "", mobile = "", city = "", age = "", gender = "", budget = "", fdate = "", tdate = "";
 
     try {
@@ -82,10 +91,65 @@
             z-index: -1;
         }
         
+        /* Navigation Bar Styling */
+        .nav-container {
+            position: relative;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            z-index: 1000;
+        }
+        
+        .home-button {
+            padding: 8px 16px;
+            background-color: #2196F3;
+            color: white;
+            font-size: 14px;
+            font-family: Arial, sans-serif;
+            text-decoration: none;
+            border-radius: 5px;
+            border: none;
+            box-shadow: 2px 2px 6px rgba(0,0,0,0.3);
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        
+        .home-button:hover {
+            background-color: #1976D2;
+        }
+        
+        .home-button:active {
+            transform: scale(0.98);
+        }
+        
+        .signout-btn {
+            background-color: #f44336;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s;
+            box-shadow: 2px 2px 6px rgba(0,0,0,0.3);
+        }
+        
+        .signout-btn:hover {
+            background-color: #d32f2f;
+        }
+        
         .header {
             padding: 25px 0;
             text-align: center;
             position: relative;
+            margin-top: 20px;
         }
         
         .header::after {
@@ -380,6 +444,11 @@
             .profile-details {
                 grid-template-columns: 1fr;
             }
+            
+            .nav-container {
+                flex-direction: column;
+                gap: 10px;
+            }
         }
         
         @media (max-width: 480px) {
@@ -403,6 +472,12 @@
 </head>
 <body>
     <div class="page-wrapper">
+        <!-- Navigation Bar -->
+        <div class="nav-container">
+            <a href="Home.jsp" class="home-button">Home</a>
+            <a href="Logout.jsp" class="signout-btn">Sign Out</a>
+        </div>
+        
         <div class="header">
             <div class="logo">Trip Buddy</div>
             <div class="subheading">Your Personal Travel Companion</div>
@@ -524,3 +599,8 @@
     %>
 </body>
 </html>
+<%}
+else{
+      response.sendRedirect("Login.jsp");
+}
+%>
